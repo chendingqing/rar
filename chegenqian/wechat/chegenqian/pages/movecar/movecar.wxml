@@ -1,0 +1,34 @@
+<!--pages/movecar/movecar.wxml-->
+<view class="container">
+    <view class="mc_banner">
+        <image src="../images/index/sp_pic.png"></image>
+    </view>
+    <view class="mc_state bgc-white">
+        <view class="state_tit">车主码挪车静电贴</view>
+        <view class="state_con">耐高温不褪色，不留残胶，可反复粘贴</view>
+        <view class="state_vip">
+            <a class="ic_vip">
+                <image src="../images/index/sp_huiyuan.png"></image>
+            </a>
+            <text class="text_vip">购买一张以上静电贴，送终身会员</text>
+        </view>
+    </view>
+    <view class="mc_con bgc-white">
+        <!--免费领取按钮 点击跳转到好友助攻页面  -->
+        <view class="mc_get_btn">
+            <navigator class="get_btn" url="../friend-assist/friend-assist">
+                <lable>免费领取</lable>
+            </navigator>
+        </view>
+        <view class="con_pic">
+            <a href=""><image src="../images/index/sp_pic2.png"></image></a>
+        </view>
+    </view>
+    <view class="con_foot bgc-white">
+        <view class="foot_moneyNum">
+            <view class="moneyNum_Num">￥{{moneyNum}}.00</view>
+            <view class="moneyNum_yetNum">原价：￥59.99</view>
+        </view>
+            <navigator class="foot_btn" url="../fill/fill">立即购买</navigator>
+    </view>
+</view>

@@ -1,0 +1,84 @@
+{extend name="public:base" /}
+{block name="js"}
+<script>
+    $(function () {
+        menu_selected('/admin/Node/lists');
+    });
+</script>
+{/block}
+{block name="content"}
+<div class="x-body">
+    <xblock>
+        <span class="layui-btn layui-btn-danger delBut" onclick="del_more()"> <i class="layui-icon"></i>批量删除</span>
+        <button class="layui-btn" onclick="window_open('添加用户','{:url("edit")}',500,600)"><i class="layui-icon"></i>添加</button>
+    </xblock>
+    <div class="layui-form layui-border-box layui-table-view" lay-filter="LAY-table-1" style=" ">
+        <div class="layui-form">
+            <table class="layui-table" lay-even lay-size="lg">
+                <thead>
+                <tr>
+                    <th>
+                        <div class="layui-unselect layui-form-checkbox" lay-skin="primary" id="checkbox_select">
+                            <i class="layui-icon"></i>
+                        </div>
+                    </th>
+                    <th>id</th>
+                    <th>节点名称</th>
+                    <th>节点路径</th>
+                    <th>节点组</th>
+                    <th>状态</th>
+                    <th>是否需要授权</th>
+                    <th>添加时间</th>
+                    <th>修改时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name="list" id="vo"}
+                <tr>
+                    <td>
+                        <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id="{$vo.node_id}">
+                            <i class="layui-icon"></i>
+                        </div>
+                    </td>
+                    <td>{$vo.node_id}</td>
+                    <td>{$vo.node_name}</td>
+                    <td>{$vo.node_url}</td>
+                    <td>{$vo.group.group_name}</td>
+                    <td>
+                    {eq name="vo.status" value="1"}正常{/eq}
+                    {eq name="vo.status" value="2"}禁用{/eq}
+                    {eq name="vo.status" value="0"}待处理{/eq}
+                    </td>
+                    <td>
+                        {eq name="vo.need_access" value="1"}需要{/eq}
+                        {eq name="vo.need_access" value="0"}不需要{/eq}
+                    </td>
+                    <td>
+                        <div class="layui-table-cell laytable-cell-1-creatTime">{$vo.create_time}</div>
+                    </td>
+                    <td>
+                        <div class="layui-table-cell laytable-cell-1-creatTime">{$vo.update_time}</div>
+                    </td>
+                    <td>
+                        <div class="layui-table-cell laytable-cell-1-sign">
+                            <a lay-event="edite" href="javascript:;" title="编辑"  onclick="window_open('用户编辑','{:url("edit",["id"=>$vo.node_id])}',500,600)">
+                            <i class="layui-icon"></i>
+                            </a>
+                            <a lay-event="del" class="del" href="javascript:;" title="删除" onclick="del({$vo.node_id})">
+                                <i class="layui-icon"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {/volist}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {$page}
+</div>
+<script >
+
+</script>
+{/block}

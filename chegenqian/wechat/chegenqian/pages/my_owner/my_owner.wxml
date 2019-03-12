@@ -1,0 +1,43 @@
+<!--pages/my_owner/my_owner.wxml-->
+<view class="container">
+    <view class="my_own_con">
+        <view class="con_tit">
+            临时停靠   扫码即到
+        </view>
+        <view class="con_code">
+            <view class="code">
+                <view class="ewm_code">
+                    <!-- 将获取到的用户二维码路径填入到scanCode中 -->
+                    <image src="{{scanCode}}"></image>
+                </view>
+            </view>
+            <view class="ic_lt ic-pab">
+                <image src="../images/myself/ewm_lt.png"></image>
+            </view>
+            <view class="ic_lb ic-pab">
+                <image src="../images/myself/ewm_lb.png"></image>
+            </view>
+            <view class="ic_rt ic-pab">
+                <image src="../images/myself/ewm_rt.png"></image>
+            </view>
+            <view class="ic_rb ic-pab">
+                <image src="../images/myself/ewm_rb.png"></image>
+            </view>
+        </view>
+        <view class="con_text">
+            <text>微信扫码挪车</text>
+        </view>
+        <view class="con_text text_gray">
+            <text>[车跟前]小程序 微信扫码联系车主 保护隐私</text>
+        </view>
+        <view class="con_text text_black">
+            <text>NO.{{myOwnerId}}</text>
+        </view>
+    </view>
+    <navigator class="my_own_ngt1" url="../friend-assist/friend-assist">
+        邀请好友助攻免费领
+    </navigator>
+    <navigator class="my_own_ngt2" url="../movecar/movecar">
+        购买车主码静电贴
+    </navigator>
+</view>

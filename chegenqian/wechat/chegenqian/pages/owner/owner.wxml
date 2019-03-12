@@ -1,0 +1,26 @@
+<view class="container" style='background:rgba(245,245,245,1)'>
+  <view class='head'>
+    <!-- 获取头像 -->
+    <image class='detail' src='{{detail}}'></image>
+    <view class='head_pic'>
+      <image src='../images/index/czm_pic.png' ></image>
+    </view>
+  </view>
+  <view class='owner_content'>
+    <view class='car_id'>
+      <!-- 这里的span中应为获取的数据 -->
+      <span>{{CarId}}</span>
+    </view>
+    <span>非常抱歉，给您添麻烦了。如果您需要挪车</span>
+    <span>请联系我，我会尽快赶到。</span>
+  </view>
+  <p class="ps">为了便于您与车主取得联系，车主码需要获得使用您的头像和昵称等信息的授权。</p>
+  <!-- 联系车主，点击拨打虚拟号 -->
+  <view class="call_owner">
+    <p>联系车主移车</p>
+  </view>
+  <!-- 我也要车主码，点击进入好友助攻页面 -->
+  <view class="get_owner">
+    <p >我也要车主码</p>
+  </view>
+</view>

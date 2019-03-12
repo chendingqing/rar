@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三级联动</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="__STATIC__/admin/asstes/css/font.css">
+    <link rel="stylesheet" href="__STATIC__/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/asstes/css/page.css">
+    <link rel="stylesheet" href="__STATIC__/admin/asstes/css/layout.css">
+    <script src="__STATIC__/admin/asstes/js/jquery.js"></script>
+    <style>
+        .select{
+            height: 30px;
+            width: auto;
+        }
+    </style>
+    <script>
+
+        $(function () {
+            $('.select_change').change(function(){
+              var pid = $(this).val();
+              var region_level = $(this).attr('name');
+                var str ='';
+                var obj;
+                if (region_level == 'provice'){
+                    obj = $('#city');
+                    str = '<option value="0">请选择市</option>';
+                    $('#county').html('<option value="0">请选择县/区</option>');
+                }
+                if (region_level == 'city'){
+                    obj = $('#county');
+                    str = '<option value="0">请选择县/区</option>';
+                }
+                if (pid<=0){
+                    obj.html(str);
+                    if (region_level =='provice'){
+                        $('#county').html('<option value="0">请选择县/区</option>');
+                    }
+                    return false;
+                }
+                $.ajax({
+                    url:"/demo/Region/linkage",
+                    type:"post",
+                    dataType:'json',
+                    data:{pid:pid},
+                    success:function(res){
+                        if (res.code==1){
+                            var data = res.data;
+                            $.each(data, function(i,val){
+                                str +='<option value="'+val.region_id+'">'+val.name+'</option>';
+                            });
+                            obj.html(str);
+                        }
+                    },
+                    error:function(e){
+
+                    }
+                });
+            })
+        });
+
+
+    </script>
+</head>
+<body>
+<div class="layui-fluid">
+
+    <div class="layui-card">
+        <div class="layui-card-header">三级联动</div>
+        <div class="layui-card-body" style="padding: 15px;">
+            <div class="layui-form-item">
+                <label class="layui-form-label">联动选择框</label>
+                <div class="layui-input-block">
+                    <div class="layui-inline">
+                        <select name="provice"  class="select select_change" id="provice">
+                            <option value="0">请选择省</option>
+                            {volist name='provice_list' id='vo'}
+                            <option value="{$vo.region_id}">{$vo.name}</option>
+                            {/volist}
+                        </select>
+                    </div>
+                    <div class="layui-inline">
+                        <select name="city" lay-filter="provice" class="select select_change" id="city">
+                            <option value="0">请选择市</option>
+                        </select>
+                    </div>
+                    <div class="layui-inline">
+                        <select name="county"  class="select" id="county">
+                            <option value="0">请选择县/区</option>
+                        </select>
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-form-mid layui-word-aux"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

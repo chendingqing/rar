@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 轮播图 -->
+  <swiper autoplay='true' interval='3000' duration='500' circular='true' indicator-dots='true' indicator-color='rgba(255,255,255,0.3)' indicator-active-color='rgba(255,255,255,1)'>
+    <view  class="banner" >
+      <swiper-item><a href=""><image src='../images/index/banner.png'></image></a></swiper-item>
+      <swiper-item><a href=""><image src='../images/index/banner.png'></image></a></swiper-item>
+      <swiper-item><a href=""><image src='../images/index/banner.png'></image></a></swiper-item>
+      <swiper-item><a href=""><image src='../images/index/banner.png'></image></a></swiper-item>
+    </view>
+  </swiper>
+  <view class="index-content">
+    <a href=""><image src="../images/index/pic.png"></image></a>
+    <view class="index_btn">
+      <!-- 点击跳转到购买页面 -->
+      <navigator class='button btn_bg' url="../movecar/movecar">
+        <h1>立即购买</h1>
+      </navigator>
+      <!-- 点击跳转到好友助攻页面 -->
+      <navigator class='button get' url="../friend-assist/friend-assist">
+        <h1>免费领取</h1>
+      </navigator>
+    </view>
+  </view>
+</view>
+

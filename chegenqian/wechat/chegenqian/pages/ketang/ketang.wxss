@@ -1,0 +1,33 @@
+/* pages/ketang/ketang.wxss */
+page{
+	position: relative;
+}
+.kt_banner{
+	width: 710rpx;
+	height: 360rpx;
+	margin: 0 auto;
+	margin-top: 20rpx;
+}
+.kt_banner image{
+	width: 100%;
+	height: 100%;
+}
+.kt_text{
+	width: 710rpx;
+	margin: 0 auto;
+	margin-top: 48rpx;
+}
+.kt_text view{
+	text-indent: 2em;
+	font-size: 28rpx;
+	color:#666;
+	line-height: 48rpx;
+}
+.kt_text .kt_text_title{
+	font-size: 28rpx;
+	color:#666;
+	line-height: 48rpx;
+}
+.kt_text_first{
+	margin-top: 48rpx;
+}

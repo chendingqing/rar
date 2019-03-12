@@ -1,0 +1,316 @@
+<!--pages/order/order.wxml-->
+<view class="container">
+    <view class="order_list">
+        <view class="list_id list_border">
+            <text>编号:{{listId}}</text>
+        </view>
+        <view class="list_det list_border  list_flex">
+            <view class="list_det_img">
+                <image src="../images/myself/pic2.png"></image>
+            </view>
+            <view class="list_det_text">
+                <text  class="text_c1">车主码挪车静电贴</text>
+                <text  class="text_c2">x{{amount}}</text>
+            </view>
+            <view class="state">
+                <view wx:if="{{state==0}}">未付款</view>
+                <view wx:elif="{{state==1}}">已付款待发货</view>
+                <view wx:elif="{{state==2}}">已付款已发货</view>
+                <view wx:elif="{{state==3}}">免费待发货</view>
+                <view wx:elif="{{state==4}}">免费已发货</view>
+                <view wx:elif="{{state==5}}">已完结</view>
+            </view>
+        </view>
+        <view class="list_carid list_border list_msg list_flex">
+            <lable class="flex2">车牌号</lable>
+            <lable class="flex3">{{carId}}</lable>
+        </view>
+        <view class="list_userName list_border list_msg list_flex">
+            <lable class="flex2">联系人姓名</lable>
+            <lable class="flex3">{{userName}}</lable>
+        </view>
+        <view class="list_phoneNum list_border list_msg list_flex">
+            <lable class="flex2">挪车电话</lable>
+            <lable class="flex3">{{phoneNum}}</lable>
+        </view>
+        <view class="list_site list_border list_msg list_flex">
+            <lable class="flex2">所在区域</lable>
+            <lable class="flex3">{{site}}</lable>
+        </view>
+        <view class="list_address list_border list_msg list_flex">
+            <lable class="flex2">详细地址</lable>
+            <lable class="flex3">{{address}}</lable>
+        </view>
+        <view class="order_btn" wx:if="{{state==0}}">
+            <navigator class="btn1" url="../account/account">重新付款</navigator>
+            <view class="btn2" bindtap="cancellation">取消订单</view>
+        </view>
+        <view class="order_btn" wx:elif="{{state==5}}">
+            <navigator class="btn1" url="../movecar/movecar">再次购买</navigator>
+        </view>
+        <view class="order_btn" wx:else>
+            <view class="btn1"  bindtap="affirm">确认收货</view>
+        </view>
+    </view>
+    <!-- 其他5种状态展示 -->
+    <view class="order_list">
+        <view class="list_id list_border">
+            <text>编号:{{listId}}</text>
+        </view>
+        <view class="list_det list_border  list_flex">
+            <view class="list_det_img">
+                <image src="../images/myself/pic2.png"></image>
+            </view>
+            <view class="list_det_text">
+                <text  class="text_c1">车主码挪车静电贴</text>
+                <text  class="text_c2">x{{amount}}</text>
+            </view>
+            <view class="state" >
+                <view wx:if="{{test1==0}}">未付款</view>
+                <view wx:elif="{{test1==1}}">已付款待发货</view>
+                <view wx:elif="{{test1==2}}">已付款已发货</view>
+                <view wx:elif="{{test1==3}}">免费待发货</view>
+                <view wx:elif="{{test1==4}}">免费已发货</view>
+                <view wx:elif="{{test1==5}}">已完结</view>
+            </view>
+        </view>
+        <view class="list_carid list_border list_msg list_flex">
+            <lable class="flex2">车牌号</lable>
+            <lable class="flex3">{{carId}}</lable>
+        </view>
+        <view class="list_userName list_border list_msg list_flex">
+            <lable class="flex2">联系人姓名</lable>
+            <lable class="flex3">{{userName}}</lable>
+        </view>
+        <view class="list_phoneNum list_border list_msg list_flex">
+            <lable class="flex2">挪车电话</lable>
+            <lable class="flex3">{{phoneNum}}</lable>
+        </view>
+        <view class="list_site list_border list_msg list_flex">
+            <lable class="flex2">所在区域</lable>
+            <lable class="flex3">{{site}}</lable>
+        </view>
+        <view class="list_address list_border list_msg list_flex">
+            <lable class="flex2">详细地址</lable>
+            <lable class="flex3">{{address}}</lable>
+        </view>
+        <view class="order_btn" wx:if="{{test1==0}}">
+            <navigator class="btn1" url="../account/account" >重新付款</navigator>
+            <view class="btn2" bindtap="cancellationTest1">取消订单</view>
+        </view>
+        <view class="order_btn" wx:elif="{{test1==5}}">
+            <navigator class="btn1" url="../movecar/movecar" >再次购买</navigator>
+        </view>
+        <view class="order_btn" wx:else>
+            <view class="btn1"  bindtap="affirmTest1">确认收货</view>
+        </view>
+    </view>
+    <view class="order_list">
+        <view class="list_id list_border">
+            <text>编号:{{listId}}</text>
+        </view>
+        <view class="list_det list_border  list_flex">
+            <view class="list_det_img">
+                <image src="../images/myself/pic2.png"></image>
+            </view>
+            <view class="list_det_text">
+                <text  class="text_c1">车主码挪车静电贴</text>
+                <text  class="text_c2">x{{amount}}</text>
+            </view>
+            <view class="state">
+                <view wx:if="{{test2==0}}">未付款</view>
+                <view wx:elif="{{test2==1}}">已付款待发货</view>
+                <view wx:elif="{{test2==2}}">已付款已发货</view>
+                <view wx:elif="{{test2==3}}">免费待发货</view>
+                <view wx:elif="{{test2==4}}">免费已发货</view>
+                <view wx:elif="{{test2==5}}">已完结</view>
+            </view>
+        </view>
+        <view class="list_carid list_border list_msg list_flex">
+            <lable class="flex2">车牌号</lable>
+            <lable class="flex3">{{carId}}</lable>
+        </view>
+        <view class="list_userName list_border list_msg list_flex">
+            <lable class="flex2">联系人姓名</lable>
+            <lable class="flex3">{{userName}}</lable>
+        </view>
+        <view class="list_phoneNum list_border list_msg list_flex">
+            <lable class="flex2">挪车电话</lable>
+            <lable class="flex3">{{phoneNum}}</lable>
+        </view>
+        <view class="list_site list_border list_msg list_flex">
+            <lable class="flex2">所在区域</lable>
+            <lable class="flex3">{{site}}</lable>
+        </view>
+        <view class="list_address list_border list_msg list_flex">
+            <lable class="flex2">详细地址</lable>
+            <lable class="flex3">{{address}}</lable>
+        </view>
+        <view class="order_btn" wx:if="{{test2==0}}">
+            <navigator class="btn1" url="../account/account">重新付款</navigator>
+            <view class="btn2" bindtap="cancellationTest2">取消订单</view>
+        </view>
+        <view class="order_btn" wx:elif="{{test2==5}}">
+            <navigator class="btn1" url="../movecar/movecar">再次购买</navigator>
+        </view>
+        <view class="order_btn" wx:else>
+            <view class="btn1"  bindtap="affirmTest2">确认收货</view>
+        </view>
+    </view>
+    <view class="order_list">
+        <view class="list_id list_border">
+            <text>编号:{{listId}}</text>
+        </view>
+        <view class="list_det list_border  list_flex">
+            <view class="list_det_img">
+                <image src="../images/myself/pic2.png"></image>
+            </view>
+            <view class="list_det_text">
+                <text  class="text_c1">车主码挪车静电贴</text>
+                <text  class="text_c2">x{{amount}}</text>
+            </view>
+            <view class="state" >
+                <view wx:if="{{test3==0}}">未付款</view>
+                <view wx:elif="{{test3==1}}">已付款待发货</view>
+                <view wx:elif="{{test3==2}}">已付款已发货</view>
+                <view wx:elif="{{test3==3}}">免费待发货</view>
+                <view wx:elif="{{test3==4}}">免费已发货</view>
+                <view wx:elif="{{test3==5}}">已完结</view>
+            </view>
+        </view>
+        <view class="list_carid list_border list_msg list_flex">
+            <lable class="flex2">车牌号</lable>
+            <lable class="flex3">{{carId}}</lable>
+        </view>
+        <view class="list_userName list_border list_msg list_flex">
+            <lable class="flex2">联系人姓名</lable>
+            <lable class="flex3">{{userName}}</lable>
+        </view>
+        <view class="list_phoneNum list_border list_msg list_flex">
+            <lable class="flex2">挪车电话</lable>
+            <lable class="flex3">{{phoneNum}}</lable>
+        </view>
+        <view class="list_site list_border list_msg list_flex">
+            <lable class="flex2">所在区域</lable>
+            <lable class="flex3">{{site}}</lable>
+        </view>
+        <view class="list_address list_border list_msg list_flex">
+            <lable class="flex2">详细地址</lable>
+            <lable class="flex3">{{address}}</lable>
+        </view>
+        <view class="order_btn" wx:if="{{test3==0}}">
+            <navigator class="btn1" url="../account/account">重新付款</navigator>
+            <view class="btn2" bindtap="cancellationTest3">取消订单</view>
+        </view>
+        <view class="order_btn" wx:elif="{{test3==5}}">
+            <navigator class="btn1" url="../movecar/movecar">再次购买</navigator>
+        </view>
+        <view class="order_btn" wx:else>
+            <view class="btn1"  bindtap="affirmTest3">确认收货</view>
+        </view>
+    </view>
+    <view class="order_list">
+        <view class="list_id list_border">
+            <text>编号:{{listId}}</text>
+        </view>
+        <view class="list_det list_border  list_flex">
+            <view class="list_det_img">
+                <image src="../images/myself/pic2.png"></image>
+            </view>
+            <view class="list_det_text">
+                <text  class="text_c1">车主码挪车静电贴</text>
+                <text  class="text_c2">x{{amount}}</text>
+            </view>
+            <view class="state" >
+                <view wx:if="{{test4==0}}">未付款</view>
+                <view wx:elif="{{test4==1}}">已付款待发货</view>
+                <view wx:elif="{{test4==2}}">已付款已发货</view>
+                <view wx:elif="{{test4==3}}">免费待发货</view>
+                <view wx:elif="{{test4==4}}">免费已发货</view>
+                <view wx:elif="{{test4==5}}">已完结</view>
+            </view>
+        </view>
+        <view class="list_carid list_border list_msg list_flex">
+            <lable class="flex2">车牌号</lable>
+            <lable class="flex3">{{carId}}</lable>
+        </view>
+        <view class="list_userName list_border list_msg list_flex">
+            <lable class="flex2">联系人姓名</lable>
+            <lable class="flex3">{{userName}}</lable>
+        </view>
+        <view class="list_phoneNum list_border list_msg list_flex">
+            <lable class="flex2">挪车电话</lable>
+            <lable class="flex3">{{phoneNum}}</lable>
+        </view>
+        <view class="list_site list_border list_msg list_flex">
+            <lable class="flex2">所在区域</lable>
+            <lable class="flex3">{{site}}</lable>
+        </view>
+        <view class="list_address list_border list_msg list_flex">
+            <lable class="flex2">详细地址</lable>
+            <lable class="flex3">{{address}}</lable>
+        </view>
+        <view class="order_btn" wx:if="{{test4==0}}">
+            <navigator class="btn1" url="../account/account">重新付款</navigator>
+            <view class="btn2" bindtap="cancellationTest4">取消订单</view>
+        </view>
+        <view class="order_btn" wx:elif="{{test4==5}}">
+            <navigator class="btn1" url="../movecar/movecar">再次购买</navigator>
+        </view>
+        <view class="order_btn" wx:else>
+            <view class="btn1"  bindtap="affirmTest4">确认收货</view>
+        </view>
+    </view>
+    <view class="order_list">
+        <view class="list_id list_border">
+            <text>编号:{{listId}}</text>
+        </view>
+        <view class="list_det list_border  list_flex">
+            <view class="list_det_img">
+                <image src="../images/myself/pic2.png"></image>
+            </view>
+            <view class="list_det_text">
+                <text  class="text_c1">车主码挪车静电贴</text>
+                <text  class="text_c2">x{{amount}}</text>
+            </view>
+            <view class="state">
+                <view wx:if="{{test5==0}}">未付款</view>
+                <view wx:elif="{{test5==1}}">已付款待发货</view>
+                <view wx:elif="{{test5==2}}">已付款已发货</view>
+                <view wx:elif="{{test5==3}}">免费待发货</view>
+                <view wx:elif="{{test5==4}}">免费已发货</view>
+                <view wx:elif="{{test5==5}}">已完结</view>
+            </view>
+        </view>
+        <view class="list_carid list_border list_msg list_flex">
+            <lable class="flex2">车牌号</lable>
+            <lable class="flex3">{{carId}}</lable>
+        </view>
+        <view class="list_userName list_border list_msg list_flex">
+            <lable class="flex2">联系人姓名</lable>
+            <lable class="flex3">{{userName}}</lable>
+        </view>
+        <view class="list_phoneNum list_border list_msg list_flex">
+            <lable class="flex2">挪车电话</lable>
+            <lable class="flex3">{{phoneNum}}</lable>
+        </view>
+        <view class="list_site list_border list_msg list_flex">
+            <lable class="flex2">所在区域</lable>
+            <lable class="flex3">{{site}}</lable>
+        </view>
+        <view class="list_address list_border list_msg list_flex">
+            <lable class="flex2">详细地址</lable>
+            <lable class="flex3">{{address}}</lable>
+        </view>
+        <view class="order_btn" wx:if="{{test5==0}}">
+            <navigator class="btn1" url="../account/account">重新付款</navigator>
+            <view class="btn2" bindtap="cancellationTest5">取消订单</view>
+        </view>
+        <view class="order_btn" wx:elif="{{test5==5}}">
+            <navigator class="btn1" url="../movecar/movecar">再次购买</navigator>
+        </view>
+        <view class="order_btn" wx:else>
+            <view class="btn1"  bindtap="affirmTest5">确认收货</view>
+        </view>
+    </view>
+</view>

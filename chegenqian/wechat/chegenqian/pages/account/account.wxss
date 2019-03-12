@@ -1,0 +1,167 @@
+/* pages/account/account.wxss */
+.acc_top,.acc_con,.acc_det,.acc_money{
+	background-color: #fff;
+}
+.acc_top,.acc_det .acc_det_top{
+	width: 100%;
+	height: 80rpx;
+	border-bottom: 2rpx solid #F5F5F5;
+}
+.acc_tit,.acc_det .acc_det_tit{
+	width: 710rpx;
+	height: 80rpx;
+	margin: 0 auto;
+}
+.acc_tit image,.acc_det .acc_det_tit image{
+	width: 50rpx;
+	height: 54rpx;
+	float: left;
+	margin-right: 12rpx;
+	margin-top: 13.5rpx;
+	position: static;
+}
+.acc_tit span,.acc_det .acc_det_tit span{
+	display: block;
+	height: 100%;
+	font-size: 26rpx;
+	line-height: 80rpx;
+	float: left;
+}
+.acc_con{
+	height: 178rpx;
+	width: 100%;
+	margin: 0 auto;
+	margin-bottom:20rpx; 
+	display: flex;
+}
+.con_img{
+	width: 122rpx;
+	height: 123rpx;
+	margin: 26rpx 27rpx 30rpx 20rpx; 
+	flex-grow: 0;
+}
+.con_img image{
+	border-radius:10rpx;
+	width: 100%;
+	height: 100%;
+
+}
+.con_name{
+	width: 280rpx;
+	flex: 1;
+}
+.con_name text{
+	font-size: 34rpx;
+	line-height: 178rpx;
+	color: #434343;
+}
+.acc_det{
+	width: 100%;
+	height: 533rpx;
+	position: relative;
+	margin-bottom: 20rpx;
+}
+.acc_det image{
+	height: 13rpx;
+	width: 100%;
+	position: absolute;
+	top: 0;
+}
+.acc_det_top{
+	padding-top: 13rpx;
+}
+.acc_text{
+	height: 450rpx;
+	display: flex;
+	flex-direction:column;
+}
+.acc_text view{
+	height: 90rpx;
+	line-height: 90rpx;
+	color: #333;
+}
+.acc_picker{
+	font-size: 30rpx;
+	margin-left: 20rpx;
+	float: left;
+}
+.car .picker_img{
+	display: inline-block;
+	width: 14rpx;
+	height: 24rpx;
+	position: static;
+	float: right;
+	margin-top: 33rpx;
+}
+.car{
+	display: flex;
+}
+.car picker{
+	height: 90rpx;
+	width: 136rpx;
+}
+.car input{
+	font-size: 32rpx;
+}
+.create-title{
+	display: block;
+	height: 100%;
+	margin: 0 auto;
+	margin-left: 114rpx;
+	width: 400rpx;
+	float: left;
+}
+.name_input{
+	margin-left:84rpx;
+}
+.acc_text lable,.acc_money lable{
+	display: block;
+	font-size: 30rpx;
+    margin-left: 20rpx;
+    float: left;
+}
+.acc_picker1{
+	font-size: 32rpx;
+	height: 90rpx;
+	width: 400rpx;
+	float: left;
+	margin-left: 114rpx;
+}
+.acc_money{
+	height: 88rpx;
+}
+.acc_money lable{
+	height: 88rpx;
+	line-height: 88rpx;
+}
+.acc_money .acc_mon_je{
+	color: #999;
+}
+.acc_money .acc_mon_Num{
+	margin-left: 114rpx;
+	width: 400rpx;
+	color: #EC3B3B;
+	font-size: 32rpx;
+}
+.acc_foot_btn{
+	height:98rpx;
+	width: 100%;
+	background-color:rgba(250,129,11,1);
+	color:#fff;
+	text-align: center;
+	line-height: 98rpx;
+	position: absolute;
+	bottom: 0;
+}
+.tit_img{
+	width: 60rpx;
+	height: 60rpx;
+	float: left;
+	margin-right: 12rpx;
+	margin-top: 13.5rpx;
+}
+.tit_img image{
+	width: 100%;
+	height: 100%;
+	position: static;
+}

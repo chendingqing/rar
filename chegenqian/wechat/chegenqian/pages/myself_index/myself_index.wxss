@@ -1,0 +1,76 @@
+/* pages/myself_index/myself_index.wxss */
+.my_head{
+	height: 183rpx;
+	background-color: #FA810B;
+	display: flex;
+}
+.my_head_pic{
+	height: 130rpx;
+	width: 130rpx;
+	margin: auto 20rpx;
+	flex-grow: 0;
+}
+.my_head_pic image{
+	width: 100%;
+	height: 100%;
+	border-radius:50%;
+	border:2px solid rgba(245,245,245,1);
+}
+.my_head_name{
+	flex: 2;
+	line-height: 183rpx;
+	color:#fff;
+	font-size: 28rpx;
+}
+.my_con{
+	width: 100%;
+	height: 720rpx;
+}
+.my_con_item{
+	border-bottom: 2rpx solid #f5f5f5;
+	height: 118rpx;
+	display: flex;
+	background: #fff;
+}
+.my_ic{
+	flex-grow: 0;
+}
+.ic_img{
+	height: 40rpx;
+	width: 40rpx;
+	margin-left: 20rpx;
+	margin-top: 40rpx;
+}
+.ic_img image{
+	width: 100%;
+	height: 100%;
+	line-height: 120rpx;
+}
+.my_lable{
+	flex: 2;
+	display: inline-block;
+	height: 118rpx;
+	color: #323232;
+	line-height: 118rpx;
+	border:none;
+  font-size: 30rpx;
+  margin-left: 27rpx;
+}
+.my_jt{
+	flex: 5;
+}
+.ic_jt{
+	width: 34rpx;
+	height: 40rpx;
+	float: right;
+	margin-top: 40rpx;
+  padding-right: 20rpx;
+}
+.ic_jt image{
+	width: 100%;
+	height: 100%;
+}
+.last_item{
+  border: none;
+  height: 120rpx;
+}

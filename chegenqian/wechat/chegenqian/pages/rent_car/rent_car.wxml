@@ -1,0 +1,26 @@
+<!--pages/rent_car/rent_car.wxml-->
+<view class="container">
+    <view class="rc_list">
+        <a href="">
+            <image src="{{rentCarImg}}"></image>
+        </a>
+    </view>
+    <view class="rc_det">
+        <view class="rc_det_tit">
+            <h1>{{rentCartTitle}}</h1>
+        </view>
+        <view class="rc_det_text">
+            <text>介绍：{{rentCarText}}</text>
+        </view>
+        <view class="rc_det_rest">
+            <i class="ic_add">
+                <image src="../images/carhome/ic_dizhi.png"></image>
+            </i>
+            <text>{{rentCarAddressText}}</text>
+            <view class="call_phone" bindtap='callphone'>
+                <image src="../images/carhome/ic_dianhua.png"></image>
+            </view>
+        </view>
+    </view>
+</view>
+

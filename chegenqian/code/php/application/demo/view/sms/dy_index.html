@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>大鱼短信</title>
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+	    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+	    <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="__STATIC__/sms/css/PublicStyle.css"/>
+	</head>
+	<body class="layui-fluid">
+		<!--
+        	作者：lfs
+        	时间：2018-09-26
+        	描述：滑动验证，倒计时
+        -->
+        <div class="contentArea layui-card">
+        	<div class="layui-card-body">
+        		<form class="layui-form">
+		        	<h2 class="txtCenter mb30">短信验证</h2>
+		        	<div class="registerAccount">
+		     
+						<div class="contactPhone Fixed">
+							<span>联系电话：</span>
+							<div class="pr">
+								<img class="statusIcon hideNode" src="__STATIC__/sms/img/success.png"/>
+								<input type="text" name="" id="" class="w440 phoneIpt" value="" placeholder="请输入您的手机号">
+								<span class="tipWaring hideNode" id="mobile_error"></span>
+							</div>
+						</div>
+						<div class="sliderVerification Fixed mt20">
+							<div id="slidingVerification" class="slider"></div>
+						</div>
+						<div class="smsVerification Fixed">
+							<span>短信验证码：</span>
+							<input type="text" name="" id="code" value="" class="w310" placeholder="请输入您短信收到的验证码"/>
+							<input type="button"  class="onSmsCode" style="background-color: #ccc" disabled="disabled" name="" id="" value="获取验证码" onClick="send_code()"/>
+							<span class="tipWaring hideNode" id="code_error"></span>
+						</div>
+						<div class="contactPhone Fixed">
+							<span></span>
+							<div class="pr">
+								<button class="onSubmit" type="button" id="form_button">提交</button>
+							</div>
+						</div>
+					</div>	
+        		</form>
+        	</div>
+        </div>
+	</body>
+	
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"	></script>
+	<script src="__STATIC__/sms/js/sliderValidationPlugin.js"></script>
+    <script src="__STATIC__/layer/layer.js"></script>
+	<script>
+	//滑块JS
+        var token = '';
+		$("#slidingVerification").slider({
+			width: 438, // width
+			height: 40, // height
+			sliderBg: "#f2f2f2", // 滑块背景颜色
+			color: "#666", // 文字颜色
+			fontSize: 14, // 文字大小
+			bgColor: "#1890ff", // 背景颜色
+			textMsg: "按住滑块，拖拽验证", // 提示文字
+			successMsg: "验证通过", // 验证成功提示文字
+			successColor: "#fff", // 滑块验证成功提示文字颜色
+			time: 400, // 返回时间
+			callback: function(result) { // 回调函数，true(成功),false(失败)
+				var mobile = $('.phoneIpt').val();
+				if (mobile != ''){
+					$.ajax({
+						type: "post",
+						url: "{:url('sms_verif_add')}",
+						data: {mobile:mobile},
+						dataType: "json",
+						success: function(data){
+							if (data.code ==1){
+							    token = data.data.token;
+                                slider_success();//验证成功
+							}else{
+                                slider_fail(data.msg);//验证失败
+							}
+						},
+                        error: function(XMLHttpRequest, textStatus, errorThrown){
+						    console.log(XMLHttpRequest.responseJSON.msg);
+                            slider_fail(XMLHttpRequest.responseJSON.msg);//验证失败
+                        }
+					});
+				}else{
+                    slider_fail('手机号码不能为空');//验证失败
+				}
+			}
+		});
+    /**
+     * 滑块验证成功
+     * wj
+     * 2018-10-8
+     */
+    function  slider_success(){
+        $('.phoneIpt').attr('readonly',true);
+        $('.phoneIpt').css('background-color','#f2f2f2');
+        $("#mobile_error").addClass('hideNode');
+        $('.onSmsCode').attr('disabled',false);
+        $('.onSmsCode').css('background-color','#1890ff');
+    }
+    /**
+     *滑块验证失败
+     * @param msg 错误信息
+     * wj
+     * 2018-10-8
+     */
+    function slider_fail(msg){
+        $("#mobile_error").text(msg);
+        $("#mobile_error").removeClass('hideNode');
+        $("#slidingVerification").slider("restore");
+        $('.phoneIpt').css('background-color','#fff');
+        $('.phoneIpt').attr('readonly',false);
+        $('.onSmsCode').css('background-color','#ccc');
+    }
+    /**
+     * 发送验证码
+     * wj
+     * 2018-10-8
+     */
+    function send_code(){
+        var mobile = $('.phoneIpt').val();
+        $.ajax({
+            type: "post",
+            url: "{:url('dy_sendcode')}",
+            data: {mobile:mobile,token:token},
+            dataType: "json",
+            success: function(data){
+                if (data.code ==1){
+                    $("#code_error").text(data.msg);
+                    $("#code_error").removeClass('hideNode');
+                    code_time();//倒计时
+                }else{
+                    $('#code_error').html(data.msg);
+                    $("#code_error").removeClass('hideNode');
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                $("#code_error").text(XMLHttpRequest.responseJSON.msg);
+                $("#code_error").removeClass('hideNode');
+                $('.phoneIpt').attr('readonly',false);
+                $("#slidingVerification").slider("restore");
+            }
+        });
+    }
+    /**
+     * 提交验证
+     * wj
+     * 2018-10-8
+     */
+    $('#form_button').click(function(){
+        var mobile = $('.phoneIpt').val();
+        var code = $('#code').val();
+        $.ajax({
+            type: "post",
+            url: "{:url('verify_code')}",
+            data: {mobile:mobile,code:code},
+            dataType: "json",
+            success: function(data){
+                if (data.code ==1){
+                    layer.msg(data.msg);
+                }else{
+                    layer.msg(data.msg);
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                var msg = XMLHttpRequest.responseJSON.msg
+                alert(msg);
+            }
+        });
+    })
+	//倒计时
+    var countdown = 60;
+    function code_time(){
+        var obj = $('.onSmsCode');
+        if (countdown == 0) {
+                obj.attr('disabled',false);
+            obj.css('background-color','#1890ff');
+                obj.val("再次获取验证码");
+                countdown = 2;
+                return;
+            } else {
+                obj.attr('disabled',true);
+            obj.css('background-color','#ccc');
+                obj.val("重新发送(" + countdown + ")");
+                countdown--;
+            }
+            setTimeout(function() {
+                code_time(obj)
+        },1000)
+    }
+	</script>
+</html>

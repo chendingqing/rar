@@ -1,0 +1,91 @@
+/**owner.wxss**/
+.head{
+  width:750rpx;
+  height:218rpx;
+  background:linear-gradient(0deg,rgba(250,129,11,1),rgba(249,234,104,0));
+  position: relative;
+}
+.detail{
+  display: block;
+  width:750rpx;
+  height:218rpx;
+  opacity: 0.7;
+}
+.head_pic{
+  width:139rpx;
+  height:138rpx;
+  border-radius:50%;
+  position: absolute;
+  top: 41rpx;
+  left: 308rpx;
+}
+.head_pic image{
+  height:100%;
+  width:100%;
+}
+.owner_content{
+  width: 710rpx;
+  height: 365rpx;
+  margin: 0 auto;
+  background:rgba(255,255,255,1);
+  box-shadow:3rpx rgba(15,32,66,0.1);
+  margin-top: 20rpx;
+  padding-top: 72rpx;
+}
+.car_id{
+  width:380rpx;
+  height:88rpx;
+  background:rgba(255,255,255,1);
+  border:1rpx solid rgba(250, 129, 11, 1);
+  border-radius:44rpx;
+  margin: 0 auto;
+  margin-bottom: 54rpx;
+}
+.car_id span{
+  display: block;
+  width: 100%;
+  line-height: 88rpx;
+  font-size: 36rpx;
+  color: #FA810B;
+}
+.owner_content span{
+  display: block;
+  font-size: 28rpx;
+  font-family:Microsoft YaHei;
+  text-align: center;
+}
+/* 备注 */
+.ps{
+  display: block;
+  font-size:22rpx;
+  width: 698rpx;
+  height: 54rpx;
+  margin: 0 auto;
+  margin-top: 25rpx;
+  color: #999;
+}
+.call_owner,.get_owner{
+  width:710rpx;
+  height:88rpx;
+  border-radius:10px;
+  border: 2rpx solid rgba(250,129,11,1);
+  margin: 0 auto;
+}
+.call_owner{
+  background:rgba(250,129,11,1);
+  color: #fff;
+  margin-top:118rpx;
+}
+.get_owner{
+  margin-top:35rpx;
+  margin-bottom:200rpx;
+}
+.call_owner p,.get_owner p{
+  display: block;
+  font-size: 36rpx;
+  line-height: 88rpx;
+  text-align: center;
+}
+.get_owner p{
+  color:#FA810B;
+}

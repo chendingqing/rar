@@ -1,0 +1,27 @@
+<div class="left-nav layui-side layui-side-menu" style="width: 220px">
+    <div class="layui-side-scroll">
+        <div class="layui-logo" lay-href="">
+            <span>{:config('web_name')}</span>
+        </div>
+        <ul class="layui-nav layui-nav-tree"  lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
+            {volist name="menu" id="vo"}
+            <li data-name="" data-jump="" class="layui-nav-item parent">
+                <a href="javascript:;" lay-tips="主页" lay-direction="2">
+                    <i class="layui-icon layui-icon-home"></i>
+                    <cite>{$vo.group_name}</cite>
+                    <span class="layui-nav-more"></span>
+                </a>
+                <dl class="layui-nav-child">
+                    {volist name='vo.node_list' id='node'}
+                        <dd data-name="" data-jump="/" class="dd">
+                            <a href="{$node.node_url}" lay-href="/" id="nodeid{$node.node_id}">{$node.node_name}</a>
+                        </dd>
+                    {/volist}
+                </dl>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>
+<!-- <div class="x-slide_left"></div> -->
+<!-- 左侧菜单结束 -->

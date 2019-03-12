@@ -1,0 +1,50 @@
+/* pages/chexian/chexian.wxss */
+page{
+	position: relative;
+}
+.cx_banner{
+	width: 710rpx;
+	height: 360rpx;
+	margin: 0 auto;
+	margin-top: 20rpx;
+}
+.cx_banner image{
+	width: 100%;
+	height: 100%;
+}
+.cx_text{
+	width: 710rpx;
+	margin: 0 auto;
+	margin-top: 48rpx;
+	margin-bottom: 128rpx;
+}
+.cx_text view{
+	text-indent: 2em;
+	font-size: 28rpx;
+	color:#666;
+	line-height: 48rpx;
+}
+.cx_text .cx_text_title{
+	font-size: 28rpx;
+	color:#666;
+	line-height: 48rpx;
+}
+.cx_text_first{
+	margin-top: 48rpx;
+}
+.cx_button{
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	background: #fff;
+	height: 128rpx;
+}
+.cx_btn{
+	width: 570rpx;
+	height: 98rpx;
+	margin: 15rpx auto;
+	background:rgba(250,129,11,1);
+	border-radius:49rpx;
+	color:#fff;
+	font-size: 36rpx;
+}

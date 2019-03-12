@@ -1,0 +1,14 @@
+/* pages/faq_vip/faq_vip.wxss */
+page{
+	background-color: #fff;
+}
+.vip_que{
+	width: 710rpx;
+	margin: 0 auto;
+	margin-top: 38rpx;
+}
+.vip_que_text{
+	text-indent:2em;
+	color:#666;
+	font-size: 26rpx;
+}

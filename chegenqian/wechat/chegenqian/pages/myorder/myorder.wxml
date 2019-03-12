@@ -1,0 +1,15 @@
+<!--pages/myorder/myorder.wxml-->
+<view class="container">
+    <view class="pmpty_page" >
+        <view class="null">
+            <image src="../images/404/{{show}}.png"></image>
+        </view>
+        <view class="null_text">
+            {{showText}}
+        </view>
+        <view class="btn">
+            <navigator wx:if="{{btn==1}}">去购买</navigator>
+            <navigator wx:else>刷新一下</navigator>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,95 @@
+{extend name="public:base" /}
+{block name="content"}
+<div class="x-body">
+    <div class="layui-row">
+        <form class="layui-form layui-col-md12 x-so" >
+
+            <input type="text" value="{$params.username}" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input" >
+            <input type="text" value="{$params.phone}"  name="phone"  placeholder="请输入用户名" autocomplete="off" class="layui-input" >
+            <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </form>
+    </div>
+    <xblock>
+        <span class="layui-btn layui-btn-danger delBut" onclick="del_more()"> <i class="layui-icon"></i>批量删除</span>
+        <button class="layui-btn" onclick="window_open('添加用户','{:url("edit")}',500,600)"><i class="layui-icon"></i>添加</button>
+    </xblock>
+    <div class="layui-form layui-border-box layui-table-view" lay-filter="LAY-table-1" style=" ">
+        <div class="layui-form">
+            <table class="layui-table" lay-even lay-size="lg">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>ID</th>
+                    <th>用户名</th>
+                    <th>密码</th>
+                    <th>邮箱</th>
+                    <th>电话</th>
+                    <th>ip</th>
+                    <th>状态</th>
+                    <th>是否显示</th>
+                    <th>排序</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name="list" id="vo"}
+                    <tr>
+                        <td>
+                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id="{$vo.id}" name="table_checkbox">
+                                <i class="layui-icon"></i>
+                            </div>
+                        </td>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.username}</td>
+                        <td>{$vo.password}</td>
+                        <td>{$vo.email}</td>
+                        <td>{$vo.phone}</td>
+                        <td>{$vo.ip}</td>
+                        <td>
+                            <div class="layui-table-cell laytable-cell-1-status">
+                                <a onclick="is_status({$vo.id})" href="javascript:;" title="状态修改" data-status="{$vo.status}">
+                                    <input type="checkbox" name="status" lay-skin="switch" lay-text="启用|停用" {if condition="$vo.status == 1"}checked {/if}>
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="layui-table-cell laytable-cell-1-status">
+                            <a onclick="is_display({$vo.id})" href="javascript:;" title="切换控制" data-status="{$vo.is_display}">
+                                <input type="checkbox" name="is_display" lay-skin="switch" lay-text="显示|隐藏" {if condition="$vo.is_display == 1"}checked {/if}>
+                            </a>
+                        </div>
+                        </td>
+                        <td><input class="layui-input" value="{$vo.sort}" style="width: 50px;text-align: center;" onchange="sort(this,'{$vo.id}')"></td>
+                        <td>
+                            <div class="layui-table-cell laytable-cell-1-creatTime">{$vo.create_time}</div>
+                        </td>
+                        <td>
+                            <div class="layui-table-cell laytable-cell-1-sign">
+                                <a lay-event="view" href="javascript:;" title="查看" data-id="{$vo.id}">
+                                    <i class="iconfont "></i>
+                                </a>
+                                <a lay-event="edite" href="javascript:;" title="编辑"  onclick="window_open('用户编辑','{:url("edit",["id"=>$vo.id])}',500,600)">
+                                    <i class="layui-icon"></i>
+                                </a>
+                                <a lay-event="del" class="del" href="javascript:;" title="删除" onclick="del({$vo.id})">
+                                    <i class="layui-icon"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {/volist}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {$page}
+</div>
+<script >
+    $(function () {
+        $("#inputMark").val('{$Think.get.artName}');
+        $("#start").val('{$Think.get.startTime}');
+        $("#end").val('{$Think.get.endTime}')
+    });
+</script>
+{/block}

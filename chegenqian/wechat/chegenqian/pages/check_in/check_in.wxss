@@ -1,0 +1,128 @@
+/* pages/check_in/check_in.wxss */
+.check_user{
+	height: 398rpx;
+	background: #fff;
+}
+.check_user_title,.check_car_title{
+	height: 88rpx;
+	border-top:1rpx solid #f5f5f5;
+	border-bottom:1rpx solid #f5f5f5;
+}
+.ic_check{
+	display: block;
+	width: 6rpx;
+	height: 30rpx;
+	margin-left: 20rpx;
+	margin-top: 20rpx;
+	float: left;
+}
+.ic_check image{
+	width: 100%;
+	height: 100%;
+}
+.check_user_title_text,.check_car_title_text{
+	height:100%;
+	font-size:30rpx;
+	font-weight:400;
+	color:#333;
+	float: left;
+	line-height: 88rpx;
+	margin-left: 20rpx;
+}
+.check_yz{
+	width: 710rpx;
+	margin: 50rpx 20rpx;
+	height: 219rpx;
+}
+.check_input_phone{
+	height: 88rpx;
+	width: 100%;
+	border:1px solid #CACACA;
+	border-radius:42px;
+	color:#CACACA;
+	font-size: 28rpx;
+	text-indent: 2em;
+}
+.check_yzm{
+	height: 88rpx;
+	width: 100%;
+	margin-top: 20rpx;
+	display: flex;
+}
+.check_yz_code{
+	height: 100%;
+	width: 478rpx;
+	border:1px solid #CACACA;
+	border-radius:42px;
+	margin-right: 12rpx;
+	float: left;
+	flex-grow: 0;
+	color:#CACACA;
+	font-size: 28rpx;
+	text-indent: 2em;
+}
+.check_yz_btn{
+	height: 100%;
+	width: 220rpx;
+	background: #FA810B;
+	border:1px solid #FA810B;
+	border-radius:42px;
+	color:#fff;
+	float: left;
+	flex-grow: 0;
+	font-size: 28rpx;
+	text-align: center;
+	line-height: 88rpx;
+}
+.check_car{
+	height: 210rpx;
+	background-color: #fff;
+	margin-top: 20rpx;
+}
+.check_picker{
+	font-size: 30rpx;
+	margin-left: 20rpx;
+	float: left;
+	line-height: 120rpx;
+}
+.car{
+	display: flex;
+}
+.car picker{
+	height: 120rpx;
+	width: 136rpx;
+}
+.car input{
+	font-size: 32rpx;
+	height: 120rpx;
+}
+.car picker .car_image{
+	display: inline-block;
+	width: 14rpx;
+	height: 24rpx;
+	position: static;
+	float: right;
+	margin-top: 48rpx;
+}
+.create-title{
+	display: block;
+	height: 100%;
+	margin: 0 auto;
+	margin-left: 114rpx;
+	width: 400rpx;
+	float: left;
+	font-size: 32rpx;
+}
+.save{
+	background: #FA810B;
+	border:1px solid #FA810B;
+	height: 98rpx;
+	width: 710rpx;
+	margin: 0 auto;
+	border-radius:42px;
+	margin-top: 203rpx;
+	color:#fff;
+	font-size: 36rpx;
+	text-align:center;
+	line-height: 98rpx;
+}

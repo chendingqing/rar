@@ -1,0 +1,123 @@
+/* pages/movecar/movecar.wxss */
+.container{
+	background-color: #F5F5F5;
+}
+.bgc-white{
+	background-color: #fff;
+}
+.mc_banner{
+	width: 750rpx;
+	height: 601rpx;
+}
+.mc_banner image{
+	width: 100%;
+	height: 100%;
+}
+.mc_state{
+	height: 201rpx;
+}
+.mc_state view{
+	padding-left: 20rpx;
+}
+.state_tit{
+	font-size: 30rpx;
+	color: #434343;
+	padding-top: 31rpx;
+}
+.state_con{
+	font-size: 26rpx;
+	color:#999;
+	margin-top: 24rpx;
+}
+.state_vip{
+	font-size: 24rpx;
+	margin-top: 22rpx;
+	height: 48rpx;
+}
+.ic_vip{
+	display: block;
+	width: 30rpx;
+	height: 27rpx;
+	margin-right: 14rpx;
+	float: left;
+}
+.ic_vip image{
+	width: 100%;
+	height: 100%;
+}
+.text_vip{
+	display: block;
+	color: #FDB404;
+	float:left;
+}
+.mc_con{
+	width: 100%;
+	margin-top:20rpx; 
+}
+.mc_get_btn{
+	height: 151rpx;
+	padding-top: 30rpx;
+	width: 710rpx;
+	margin: 0 auto;
+}
+.get_btn{
+	height: 98rpx;
+	background-color: #06CA10;
+	width: 100%;
+	display: block;
+}
+.get_btn lable{
+	display: inline-block;
+	font-size: 36rpx;
+	color: #fff;
+	line-height: 98rpx;
+	text-align: center;
+	width: 100%;
+}
+.con_pic{
+	width: 750rpx;
+	height: 934rpx;
+}
+.con_pic a{
+	display: block;
+	height: 100%;
+}
+.con_pic a image{
+	width: 100%;
+	height: 100%
+}
+.con_foot{
+	height: 98rpx;
+	width: 100%;
+	display: flex;
+	position: fixed;
+	bottom: 0;
+}
+.foot_moneyNum{
+	width: 477rpx;
+	height: 100%;
+	flex: 2;
+	display: flex;
+}
+.foot_btn{
+	flex: 1;
+	background-color: #FA810B;
+	color: #fff;
+	font-size: 36rpx;
+	line-height: 98rpx;
+	text-align: center;
+}
+.moneyNum_Num,.moneyNum_yetNum{
+	line-height: 98rpx;
+}
+.moneyNum_Num{
+	flex:1;
+	color:#FB543C;
+	font-size: 40rpx;
+}
+.moneyNum_yetNum{
+	flex: 2;
+	color:#858585;
+	text-decoration: line-through;
+	font-size: 24rpx;
+}

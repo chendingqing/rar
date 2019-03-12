@@ -1,0 +1,60 @@
+<view class="container">
+    <view class='fir_banner'>
+      <image src='../images/index/haoyou-pic.png'></image>
+    </view>
+    <view class='fir_tit'>
+      <span>邀请人</span>
+    </view>
+    <view class='fir_content'>
+    <!--微信昵称与头像需要获取授权  -->
+      <view class="fir_con_top">
+        <image src='{{weChatHeadImg}}'></image>
+        <view class="weChatName">
+          <span>{{weChatName}}</span>
+        </view>
+      </view>
+      <!-- 记录助攻数，需要获取授权一个微信号只能助攻一次 -->
+      <view class='fir_con_jilu'>
+        <!-- 助攻过的与目标助攻需要进行计算 -->
+        <view class='jilu_used'>
+          <image src='../images/index/haoyou_pic3.png'></image>
+          <view class="jilu_text">
+            <p>{{usedNum}}人</p>
+            <span>已成功邀请</span>
+          </view>
+        </view>
+        <view class='jilu_unused'>
+          <image src='../images/index/haoyou_pic3.png'></image>
+          <view class="jilu_text">
+            <p>{{unUsedNum}}人</p>
+            <span>在邀请路上</span>
+          </view>
+        </view>
+      </view>
+      <!--以下图标需要授权 -->
+      <view class='fir_con_img'>
+        <view class="img_item">
+          <a href=""><image src='{{firpic01}}'></image></a>
+          <a href=""><image src='{{firpic02}}'></image></a>
+          <a href=""><image src='{{firpic03}}'></image></a>
+          <a href=""><image src='{{firpic04}}'></image></a>
+          <a href=""><image src='{{firpic05}}'></image></a>
+          <a href=""><image src='{{firpic06}}'></image></a>
+          <a href=""><image src='{{firpic07}}'></image></a>
+          <a href=""><image src='{{firpic08}}'></image></a>
+          <a href=""><image src='{{firpic09}}'></image></a>
+          <a href=""><image src='{{firpic10}}'></image></a>
+        </view>
+        <view class="fir_btn" >
+          <!-- 助攻按钮按下后获取授权信息 -->
+          <view class="fir_btn1" >
+            <span>我要助攻</span>
+          </view>
+          <!-- 邀请按钮按下后弹出分享信息 -->
+          <view class="fir_btn2">
+            <span>邀请好友助攻</span>
+          </view>
+        </view>
+      </view>
+    </view>
+</view>

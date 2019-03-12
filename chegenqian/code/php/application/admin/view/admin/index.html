@@ -1,0 +1,108 @@
+{extend name="public:base" /}
+{block name="js"}
+<script>
+    $(function () {
+        menu_selected('/admin/Admin/lists');
+    });
+</script>
+{/block}
+{block name="content"}
+<div class="x-body">
+    <div class="layui-row">
+        <form class="layui-form layui-col-md12 x-so" >
+            <input class="layui-input" placeholder="开始日" name="startTime"  value="{$params.startTime}" id="start" autocomplete="off">
+            <input class="layui-input" placeholder="结束日" name="endTime"  value="{$params.endTime}" id="end" autocomplete="off">
+            <input type="text" name="artName"  placeholder="请输入用户名" autocomplete="off" class="layui-input" value="{$params.artName}">
+            <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </form>
+    </div>
+    <xblock>
+        <button class="layui-btn layui-btn-danger delBut" onclick="del_more()"> <i class="layui-icon"></i>批量删除</button>
+        <button class="layui-btn" onclick="window_open('添加用户','/admin/admin/edit',500,600)"><i class="layui-icon"></i>添加</button>
+    </xblock>
+    <div class="layui-form layui-border-box layui-table-view" lay-filter="LAY-table-1" style=" ">
+        <div class="layui-form">
+            <table class="layui-table" lay-even lay-size="lg">
+                <colgroup>
+                    <col width="5%">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="15%">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>
+                        <div class="layui-unselect layui-form-checkbox" lay-skin="primary" id="checkbox_select">
+                            <i class="layui-icon"></i>
+                        </div>
+                    </th>
+                    <th>ID</th>
+                    <th>用户名</th>
+                    <th>角色</th>
+                    <th>状态</th>
+                    <th>上次登录时间</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name="list" id="vo"}
+                    <tr>
+                        <td>
+                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id="{$vo.admin_id}">
+                                <i class="layui-icon"></i>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="layui-table-cell laytable-cell-1-id">{$vo.admin_id}</div>
+                        </td>
+
+                        <td>
+                            <div class="layui-table-cell laytable-cell-1-name">{$vo.username}</div>
+                        </td>
+
+                        <td>
+                            <div class="layui-table-cell laytable-cell-1-name">{$vo.role.role_name}</div>
+                        </td>
+
+                        <td>
+                            <div class="layui-table-cell laytable-cell-1-status">
+                                <a onclick="status_change(this,'{$vo.admin_id}','/admin/admin/edit')" href="javascript:;" title="状态修改" data-status="{$vo.status}">
+                                    <input type="checkbox" name="status" lay-skin="switch" lay-text="启用|停用" {if condition="$vo.status == 1"}checked {/if}>
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="layui-table-cell laytable-cell-1-lastLogin"><?php echo date("Y-m-d H:i:s",$vo['last_login_time']); ?></div>
+                        </td>
+                        <td>
+                            <div class="layui-table-cell laytable-cell-1-creatTime">{$vo.create_time}</div>
+                        </td>
+                        <td>
+                            <div class="layui-table-cell laytable-cell-1-sign">
+                                <a lay-event="view" href="javascript:;" title="查看"onclick="window_open('用户查看','/admin/admin/show?id={$vo.admin_id}',500,400)" >
+                                    <i class="iconfont "></i>
+                                </a>
+                                <a lay-event="edite" href="javascript:;" title="编辑"  onclick="window_open('用户编辑','/admin/admin/edit?id={$vo.admin_id}',500,500)">
+                                    <i class="layui-icon"></i>
+                                </a>
+                                <a lay-event="del" href="javascript:;" title="删除"  onclick="del({$vo.admin_id})">
+                                    <i class="layui-icon"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {/volist}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {$page}
+</div>
+{/block}

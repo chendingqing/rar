@@ -1,0 +1,114 @@
+<!--pages/fill/fill.wxml-->
+<view class="container">
+    <view class="fill_top">
+        <view class="fill_tit">
+            <view class="tit_img">
+                <image src="../images/index/zl_dd.png"></image>
+            </view>
+            <span>订单内容</span>
+        </view>
+    </view>
+    <view class="fill_con">
+        <view class='con_img'>
+            <image src="../images/index/sp_pic.png"></image>
+        </view>
+        <view class='con_name'>
+          <text>车主码挪车静电贴</text>
+      </view>
+  </view>
+  <!-- 收货详情 -->
+  <view class="fill_det">
+    <image class="det_ct" src="../images/index/zl_fg.png"></image>
+    <view class="fill_det_top" >
+        <view class="fill_det_tit">
+            <view class="tit_img">
+                <image src="../images/index/zl_sj.png" class="bind_phone"></image>
+            </view>
+            <span>绑定手机</span>
+        </view>
+    </view>
+    <view class="fill_text">
+        <view class="car">
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                <view class="fill_picker">
+                    {{array[index]}}
+                    <image src="../images/index/jiantou.png"  class="car_image"></image>
+                </view>
+            </picker>
+            <input class='create-title' placeholder="请输入车牌号" value="{{carId}}"  bindinput="getCarId" ></input>
+        </view>
+        <view class="phone">
+            <lable>挪车电话</lable>
+            <input class='create-title' placeholder="请输入联系电话" value="{{phone}}" bindinput="getPhone"></input>
+        </view>
+        <view class="yanzheng">
+            <input class='create-title yz_input' placeholder="请输入验证码" value="{{yanzheng}}" bindinput="getyanzheng"></input>
+            <view class="yz_btn">
+            <button class='yz' bindtap="getVerificationCode" plain="false" disabled='{{disabled}}' style="border:0px;color:{{color}};{{style}}"> {{timeText}}
+            </button>
+         </view>
+     </view>
+ </view>
+</view>    
+<view class="fill_det">
+    <view class="fill_det_top fill_pdt" >
+        <view class="fill_det_tit" >
+            <view class="tit_img">
+                <image src="../images/index/zl_sh.png"></image>
+            </view>
+            <span>收货地址</span>
+        </view>
+    </view>
+    <view class="fill_text">
+        <view class="name">
+            <lable>联系人姓名</lable>
+            <input class='create-title' class="name_input" placeholder="请输入姓名" value="{{name}}" bindinput="getuserName"></input>
+        </view>
+        <view class="site">
+            <lable>所在区域</lable>
+            <picker bindchange="changeRegin" mode = "region" value="{{region}}">
+                <view class="fill_picker1"> 
+                    <input type="text"  value="{{address}}" disabled="disabled" placeholder="请选择区域" bindinput="getAddress"></input>
+                    <image src="../images/index/jiantou.png" >
+                    </image>
+                </view>
+            </picker>
+        </view>
+        <view class="site_det">
+            <lable>详细地址</lable>
+            <input class='create-title' placeholder="请输入详细地址" value="{{site_det}}" bindinput="getSite"></input>
+        </view>
+    </view>
+</view>
+<!-- 结算金额 -->
+<view class="fill_money">
+    <lable class="fill_mon_je">应付金额</lable>
+    <lable class="fill_mon_Num">￥{{moneyNum}}.00</lable>
+</view>
+<!-- 底部按钮 点击后生成订单 -->
+<button class="fill_foot_btn"  bindtap="lastCheck">立即购买</button>
+</view>
+<!-- 无地址 -->
+<view class="fill_alert" style="{{show1}}">
+    <view class="alert">
+        <image src="../images/index/alert.png"></image>
+        <view class="alert_text">
+            请填写您的收货地址
+        </view>
+        <button class="alert_btn" bindtap="alert_btn">
+            确定
+        </button>
+    </view>
+</view>
+<!-- 支付失败 -->
+<view class="fill_alert " style="{{show2}}">
+    <view class="alert">
+        <image src="../images/index/alert.png"></image>
+        <view class="alert_text pay_err" >
+            支付未完成！您还可以在我的订单中对未完成的订单进行付款。
+        </view>
+        <button class="alert_btn">
+            确定
+        </button>
+    </view>
+</view>

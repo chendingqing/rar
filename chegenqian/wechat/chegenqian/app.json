@@ -1,0 +1,65 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/fill/fill",
+    "pages/scanCode/scanCode",
+    "pages/order/order",
+    "pages/account/account",
+    "pages/carhome_index/carhome_index",
+    "pages/myself_index/myself_index",
+    "pages/friend-assist/friend-assist",
+    "pages/join_share/join_share",
+    "pages/ketang/ketang",
+    "pages/myorder/myorder",
+    "pages/null_order/null_order",
+    "pages/check_in/check_in",
+    "pages/repair_car/repair_car",
+    "pages/rent_car/rent_car",
+    "pages/used_car/used_car",
+    "pages/jiaxiao/jiaxiao",
+    "pages/buycar/buycar",
+    "pages/chexian/chexian",
+    "pages/join_we/join_we",
+    "pages/faq_ship/faq_ship",
+    "pages/faq/faq",
+    "pages/faq_vip/faq_vip",
+    "pages/owner/owner",
+    "pages/my_owner/my_owner",
+    "pages/movecar/movecar"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#B6B8B9",
+    "selectedColor": "#fb810b",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "pages/images/index/ic_home.png",
+      "selectedIconPath": "pages/images/index/ic_home2.png"
+    },
+    {
+      "pagePath": "pages/scanCode/scanCode",
+      "text": "扫码挪车",
+      "iconPath": "pages/images/index/ic_saoma.png",
+      "selectedIconPath": "pages/images/index/ic_saoma2.png"
+    },
+    {
+      "pagePath": "pages/carhome_index/carhome_index",
+      "text": "汽车之家",
+      "iconPath": "pages/images/index/ic_qiche.png",
+      "selectedIconPath": "pages/images/index/ic_qiche2.png"
+    },
+    {
+      "pagePath": "pages/myself_index/myself_index",
+      "text": "个人中心",
+      "iconPath": "pages/images/index/ic_me.png",
+      "selectedIconPath": "pages/images/index/ic_me2.png"
+    }        
+    ]   
+  }
+}

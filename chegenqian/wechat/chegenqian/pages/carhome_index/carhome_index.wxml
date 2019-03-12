@@ -1,0 +1,74 @@
+<!--pages/carhome_index/carhome_index.wxml-->
+<view class="container">
+    <swiper autoplay='true' interval='3000' duration='500' circular='true' indicator-dots='true' indicator-color='rgba(255,255,255,0.3)' indicator-active-color='rgba(255,255,255,1)'>
+        <view  class="banner" >
+          <swiper-item><a href=""><image src='../images/carhome/pic4.png'></image></a></swiper-item>
+          <swiper-item><a href=""><image src='../images/carhome/pic4.png'></image></a></swiper-item>
+          <swiper-item><a href=""><image src='../images/carhome/pic4.png'></image></a></swiper-item>
+          <swiper-item><a href=""><image src='../images/carhome/pic4.png'></image></a></swiper-item>
+        </view>
+  </swiper>
+  <view class="carhome_menu">
+      <view class="menu">
+          <!-- 需要授权第三方 -->
+          <navigator class="menu_wz">
+              <image class="ic_menu" src="../images/carhome/weigui.png"></image>
+              <text class="menu_text">
+                  违章查询
+              </text>
+          </navigator>
+          <navigator class="menu_kt" url="../ketang/ketang">
+              <image class="ic_menu" src="../images/carhome/ketang.png"></image>
+              <text class="menu_text">
+                  安全课堂
+              </text>
+          </navigator>
+          <navigator class="menu_cx" url="../chexian/chexian">
+              <image class="ic_menu" src="../images/carhome/chexian.png"></image>
+              <text class="menu_text">
+                  0元车险
+              </text>
+          </navigator>
+      </view>
+      <view class="menu">
+          <navigator class="menu_gc" url="../buycar/buycar">
+              <image class="ic_menu" src="../images/carhome/gouche.png"></image>
+              <text class="menu_text">
+                  0元购车
+              </text>
+          </navigator>
+          <navigator class="menu_jr" url="../join_share/join_share">
+              <image class="ic_menu" src="../images/carhome/jarufenxiang.png"></image>
+              <text class="menu_text">
+                  加入分享
+              </text>
+          </navigator>
+          <navigator class="menu_jx" url="../jiaxiao/jiaxiao">
+              <image class="ic_menu" src="../images/carhome/jiaxaio.png"></image>
+              <text class="menu_text">
+                  驾校
+              </text>
+          </navigator>
+      </view>
+      <view class="menu">
+          <navigator class="menu_es" url="../used_car/used_car">
+              <image class="ic_menu" src="../images/carhome/ershouche.png"></image>
+              <text class="menu_text">
+                  二手车
+              </text>
+          </navigator>
+          <navigator class="menu_zc" url="../rent_car/rent_car">
+              <image class="ic_menu" src="../images/carhome/zuche.png"></image>
+              <text class="menu_text">
+                  租车
+              </text>
+          </navigator>
+          <navigator class="menu_xc" url="../repair_car/repair_car">
+              <image class="ic_menu" src="../images/carhome/xiuche.png"></image>
+              <text class="menu_text">
+                  修车
+              </text>
+          </navigator>
+      </view>
+  </view>
+</view>

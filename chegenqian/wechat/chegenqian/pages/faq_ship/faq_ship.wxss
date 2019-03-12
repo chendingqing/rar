@@ -1,0 +1,14 @@
+/* pages/faq_ship/faq_ship.wxss */
+page{
+	background-color: #fff;
+}
+.ship_que{
+	width: 710rpx;
+	margin: 0 auto;
+	margin-top: 38rpx;
+}
+.ship_que_text{
+	text-indent:2em;
+	color:#666;
+	font-size: 26rpx;
+}

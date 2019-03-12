@@ -1,0 +1,42 @@
+<!--pages/check_in/check_in.wxml-->
+<view class="container">
+    <view class="check_user">
+        <view class="check_user_title">
+            <i class="ic_check">
+                <image src="../images/myself/pic.png"></image>
+            </i>
+            <view class="check_user_title_text">
+                注册车主码
+            </view>
+        </view>
+        <view class="check_yz">
+            <input type="text" class="check_input_phone" placeholder="请输入手机号" value="{{phone}}"></input>
+            <view class="check_yzm">
+                <input type="text" class="check_yz_code" placeholder="请输入验证码" value="{{yanzheng}}"></input>
+                <button class='check_yz_btn' bindtap="getVerificationCode" disabled='{{disabled}}' style="color:{{color}};border:none">{{timeText}}</button>
+            </view>
+        </view>
+    </view>
+    <view class="check_car">
+        <view class="check_car_title">
+            <i class="ic_check">
+                <image src="../images/myself/pic.png"></image>
+            </i>
+            <view class="check_car_title_text">
+                您的车辆信息
+            </view>
+        </view>
+        <view class="car">
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                <view class="check_picker">
+                    {{array[index]}}
+                </view>
+                <image src="../images/index/jiantou.png"  class="car_image"></image>
+            </picker>
+            <input class='create-title' placeholder="请输入车牌号" value="{{carId}}" onfocus="focus()"></input>
+        </view>
+    </view>
+    <button class="save">
+        保存
+    </button>
+</view>

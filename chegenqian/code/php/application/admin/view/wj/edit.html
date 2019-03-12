@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户编辑</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="__STATIC__/admin/asstes/css/font.css">
+    <link rel="stylesheet" href="__STATIC__/layui/css/layui.css">
+    <link rel="stylesheet" href="__STATIC__/admin/asstes/css/page.css">
+    <link rel="stylesheet" href="__STATIC__/admin/asstes/css/layout.css">
+    <script src="__STATIC__/admin/asstes/js/jquery.js"></script>
+    <script src="__STATIC__/layui/layui.js"></script>
+    <script src="__STATIC__/admin/asstes/js/layout.js"></script>
+    <script>
+        /**
+         * 提交表单
+         */
+        function submit_form(form_id) {
+            var form = $('#'+form_id);
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: form.attr("action") ,
+                data: form.serialize(),
+                success: function (result) {
+                    $('#return_msg').text(result.msg);
+                    $('#return_info').css('display','block');
+                    if (result.code ==1){
+                        layer.alert(result.msg, {icon: 6},function () {
+                            // 获得frame索引
+                            var index = parent.layer.getFrameIndex(window.name);
+                            //关闭当前frame
+                            parent.layer.close(index);
+                        })
+                    }else{
+                        layer.msg(result.msg,{icon: 5});
+                    }
+                },
+                error : function(jqXHR, textStatus, errorThrown) {
+                    var return_msg = jqXHR.responseJSON ;
+                    layer.msg(return_msg.msg,{icon: 5});
+
+
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div class="layui-layer-content">
+    <form class="layui-form" style="padding: 20px 0 0 0;" action="{:url('edit')}" method="post" id="form_id">
+        <input type="hidden"  name="id" value="{$info.id}">
+        <div class="layui-form-item">
+            <label for="L_name" class="layui-form-label">
+                <span class="x-red">*</span>用户名
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="L_name" name="username" value="{$info.username}"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                1到16个字符
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_name" class="layui-form-label">
+                <span class="x-red">*</span>密码
+            </label>
+            <div class="layui-input-inline">
+                <input type="text"  name="password" value="{$info.password}"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                1到16个字符
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_name" class="layui-form-label">
+                <span class="x-red">*</span>邮箱
+            </label>
+            <div class="layui-input-inline">
+                <input type="text"  name="email" value="{$info.email}"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                1到16个字符
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_name" class="layui-form-label">
+                <span class="x-red">*</span>电话
+            </label>
+            <div class="layui-input-inline">
+                <input type="text"  name="phone" value="{$info.phone}"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                1到16个字符
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_name" class="layui-form-label">
+                <span class="x-red">*</span>排序
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="L_sort" name="sort" value="{$info.sort}"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                1到16个字符
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_name" class="layui-form-label">
+                <span class="x-red">*</span>ip
+            </label>
+            <div class="layui-input-inline">
+                <input type="text"  name="ip" value="{$info.ip}"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                1到16个字符
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_name" class="layui-form-label">
+                <span class="x-red">*</span>状态
+            </label>
+            <div class="layui-input-inline">
+                <select name="role_id" lay-verify="" lay-search >
+                    <option value="">请选择</option>
+                    {volist name="status_array" id="vo" key='k'}
+                        <option  value="{$k}"   {if condition="$k == $info.status"} selected="selected"{/if}>{$vo}</option>
+                    {/volist}
+                </select>
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                必选
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_status" class="layui-form-label">
+                <span class="x-red">*</span>
+            </label>是否显示
+            <div class="layui-input-inline">
+                <input type="checkbox" name="is_display" title="显示" id="L_status"  value="1"   {if condition="$info.is_display == 1"}checked {/if}>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label  class="layui-form-label"></label>
+            <span  class="layui-btn" onclick="submit_form('form_id')">
+                提交
+            </span>
+        </div>
+    </form>
+</div>
+</body>
+</html>

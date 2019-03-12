@@ -1,0 +1,86 @@
+{extend name="public:base" /}
+{block name="js"}
+<script>
+    $(function () {
+        menu_selected('/admin/Role/role_list');
+    });
+</script>
+{/block}
+{block name="content"}
+<div class="x-body">
+    <xblock>
+        <button class="layui-btn layui-btn-danger delBut" onclick="del_more()"> <i class="layui-icon"></i>批量删除</button>
+        <button class="layui-btn" onclick="window_open('角色用户','/admin/role/role_edit',500,600)"><i class="layui-icon"></i>添加</button>
+    </xblock>
+    <div class="layui-form layui-border-box layui-table-view" lay-filter="LAY-table-1" style=" ">
+        <div class="layui-form">
+            <table class="layui-table" lay-even lay-size="lg">
+                <thead>
+                <tr>
+                    <th>
+                        <div class="layui-unselect layui-form-checkbox" lay-skin="primary" id="checkbox_select">
+                            <i class="layui-icon"></i>
+                        </div>
+                    </th>
+                    <th>ID</th>
+                    <th>角色名称</th>
+                    <th>状态</th>
+                    <th>添加时间</th>
+                    <th>修改时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name="list" id="vo"}
+                <tr>
+                    <td>
+                        <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id="{$vo.role_id}">
+                            <i class="layui-icon"></i>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="layui-table-cell laytable-cell-1-id">{$vo.role_id}</div>
+                    </td>
+
+                    <td>
+                        <div class="layui-table-cell laytable-cell-1-name">{$vo.role_name}</div>
+                    </td>
+
+                    <td>
+                        <div class="layui-table-cell laytable-cell-1-status">
+                            <a onclick="status_change(this,'{$vo.role_id}','/admin/role/role_edit')" href="javascript:;" title="状态修改" data-status="{$vo.status}">
+                                <input type="checkbox" name="status" lay-skin="switch" lay-text="启用|停用" {if condition="$vo.status == 1"}checked {/if}>
+                            </a>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="layui-table-cell laytable-cell-1-name">{$vo.create_time}</div>
+                    </td>
+
+                    <td>
+                        <div class="layui-table-cell laytable-cell-1-creatTime">{$vo.update_time}</div>
+                    </td>
+                    <td>
+                        <div class="layui-table-cell laytable-cell-1-sign">
+                            <a lay-event="edite" href="javascript:;" title="编辑"  onclick="window_open('角色编辑','/admin/Role/role_edit?role_id={$vo.role_id}',500,500)">
+                                <i class="layui-icon"></i>
+                            </a>
+                            <a lay-event="view" href="javascript:;" title="角色授权"onclick="window_open('角色授权','/admin/Role/set_node?role_id={$vo.role_id}',900,700)" >
+                                <i class="layui-icon layui-icon-set"></i>
+                            </a>
+                            <a lay-event="del" class="del" href="javascript:;" title="删除" data-id="{$vo.role_id}" onclick="del({$vo.role_id})">
+                                <i class="layui-icon"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {/volist}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {$page}
+</div>
+{/block}

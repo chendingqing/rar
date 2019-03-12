@@ -1,0 +1,14 @@
+/* pages/join_we/join_we.wxss */
+page{
+	background-color: #fff;
+}
+.join_we{
+	width: 710rpx;
+	margin: 0 auto;
+	margin-top: 38rpx;
+}
+.join_we_text{
+	text-indent:2em;
+	color:#666;
+	font-size: 26rpx;
+}

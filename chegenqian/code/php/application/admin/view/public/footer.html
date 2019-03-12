@@ -1,0 +1,213 @@
+
+<!-- 底部开始 -->
+<div class="footer">
+    <div class="copyright">{:config('web.COPYRIGHT')}</div>
+</div>
+<!-- 底部结束 -->
+<script type="application/javascript">
+    /**
+     * 单个删除
+     */
+    function del(id,model){
+        layer.confirm('确认删除数据？', function(index){
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "{:url('del_by_id')}" ,
+                data: {
+                    ids:id,
+                    model:model,
+                },
+                success: function (result) {
+                    layer.msg(result.msg,{icon: 1,time:800},function () {
+                        if (result.code ==1){
+                            location.replace(location.href);
+                        }
+                    });
+                },
+                error : function(jqXHR, textStatus, errorThrown) {
+                    var return_msg = $.parseJSON(jqXHR.responseText) ;
+
+                    layer.msg(return_msg.msg);
+
+                }
+            });
+        });
+    }
+    /**
+     * 批量删除
+     */
+    function del_more(model){
+//        debugger;
+        var ids ='';
+        $("tbody>tr").each(function () {
+            var elem = $(this).children("td:first-child").find("div");
+            if (elem.hasClass("layui-form-checked")){
+                if (ids ==''){
+                    ids =elem.attr("data-id");
+                }else{
+                    ids +=','+elem.attr("data-id");
+                }
+
+            }
+        });
+        if(ids == ''){
+            layer.msg("至少选择一个数据！",{icon: 5,time:1000});
+            return false;
+        }
+        layer.confirm('确认删除数据？', function(index){
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "{:url('del_by_id')}" ,
+                data: {
+                    ids:ids,
+                    model:model,
+                },
+                success: function (result) {
+                    layer.msg(result.msg,{icon: 1,time: 800},function () {
+                        location.replace(location.href);
+                    });
+                },
+                error : function(jqXHR, textStatus, errorThrown) {
+                    var return_msg = $.parseJSON(jqXHR.responseText) ;
+                    layer.msg(return_msg.msg);
+                }
+            });
+        });
+    }
+    /**
+     * 排序
+     */
+    function sort(obj,id,model){
+        var sort = $(obj).val();
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "{:url('sort_by_id')}" ,
+            data: {
+                id:id,
+                sort:sort,
+                model:model,
+            },
+            success: function (result) {
+                layer.msg(result.msg);
+            },
+            error : function(jqXHR, textStatus, errorThrown) {
+                var return_msg = $.parseJSON(jqXHR.responseText) ;
+                layer.msg(return_msg.msg);
+            }
+        });
+    }
+    /**
+     * 控制显示
+     */
+    function is_display(id,model){
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "{:url('display_by_id')}" ,
+            data: {
+                id:id,
+                model:model,
+            },
+            success: function (result) {
+                layer.msg(result.msg, {icon: 1,time:2000});
+            },
+            error : function(jqXHR, textStatus, errorThrown) {
+                var return_msg = $.parseJSON(jqXHR.responseText) ;
+                layer.msg(return_msg.msg);
+
+            }
+        });
+    }
+    /**
+     * 控制显示
+     */
+    function is_status(id,model){
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "{:url('status_by_id')}" ,
+            data: {
+                id:id,
+                model:model,
+            },
+            success: function (result) {
+                layer.msg(result.msg, {icon: 1,time:2000});
+            },
+            error : function(jqXHR, textStatus, errorThrown) {
+                var return_msg = $.parseJSON(jqXHR.responseText) ;
+                layer.msg(return_msg.msg);
+
+            }
+        });
+    }
+    /**
+     * 修改某个字段
+     */
+    function char_edit(obj,id,model,char){
+        var value = $(obj).val();
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "{:url('char_by_id')}" ,
+            data: {
+                id:id,
+                char:char,
+                char_val:value,
+                model_str:model,
+            },
+            success: function (result) {
+                layer.msg(result.msg);
+            },
+            error : function(jqXHR, textStatus, errorThrown) {
+                var return_msg = $.parseJSON(jqXHR.responseText) ;
+                layer.msg(return_msg.msg);
+            }
+        });
+    }
+    /**
+     * 提交表单
+     */
+    function submit_form(form_id) {
+        var form = $('#'+form_id);
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: form.attr("action") ,
+            data: form.serialize(),
+            success: function (result) {
+                $('#return_msg').text(result.msg);
+                $('#return_info').css('display','block');
+                if (result.code ==1){
+                    if (result.url){
+                        window.location.href = result.url;
+                    }else{
+                        window.location.href = document.referrer;
+                    }
+                }
+            },
+            error : function(jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
+                var return_msg = jqXHR.responseJSON ;
+                $('#return_msg').text(return_msg.msg);
+                $('#return_info').css('display','block');
+
+
+            }
+        });
+    }
+    /**
+     * 控制菜单选中
+     * @param url
+     */
+    function menu_selected(url){
+        var obj = $('[href="'+url+'"]');
+        var p = obj.parents('.parent');
+        p.addClass('layui-nav-itemed');
+        obj.parents('.dd').addClass('layui-this');
+    }
+
+
+</script>

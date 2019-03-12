@@ -1,0 +1,17 @@
+<!--pages/faq/faq.wxml-->
+<view class="container">
+    <view class="question">
+        <navigator class="question_ship" url="../faq_ship/faq_ship">
+            <lable class="que_lable">关于发货问题</lable>
+            <view class="que_ic">
+                <image  src="../images/myself/jiantou.png"></image>
+            </view>
+        </navigator>
+        <navigator class="question_vip" url="../faq_vip/faq_vip">
+            <lable class="que_lable">关于会员问题</lable>
+            <view class="que_ic">
+                <image  src="../images/myself/jiantou.png"></image>
+            </view>
+        </navigator>
+    </view>
+</view>

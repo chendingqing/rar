@@ -1,0 +1,9 @@
+<!--pages/scanCode/scanCode.wxml-->
+<view class="container">
+  <view class="pic_che">
+    <image src="../images/index/che.png"></image>
+  </view>
+  <view class="scanCode_btn">
+    <image class="scanCodeBtn" src="../images/index/saoma_btn.png" bindtap="scanCode"></image>
+  </view>
+</view>

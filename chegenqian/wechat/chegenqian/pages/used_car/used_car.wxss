@@ -1,0 +1,66 @@
+/* pages/used_car/used_car.wxss */
+page{
+	background-color: #f5f5f5;
+}
+.uc_list{
+	width: 750rpx;
+}
+.uc_list a{
+	display: block;
+	width: 100%;
+	height: 320rpx;
+}
+.uc_list a image{
+	width: 100%;
+	height: 100%;
+}
+.uc_det{
+	width: 750rpx;
+	padding-top: 26rpx;
+	background: #fff;
+}
+.uc_det_tit,.uc_det_text,.uc_det_rest{
+	width: 710rpx;
+	margin: 0 auto;
+}
+.uc_det_tit h1{
+	color:#444;
+	font-size: 32rpx;
+}
+.uc_det_text text{
+	color:#888;
+	font-size: 28rpx;
+	line-height: 40rpx;
+}
+.uc_det_rest{
+	display: flex;
+}
+.ic_add{
+	display: block;
+	width: 40rpx;
+	height: 40rpx;
+	flex-grow:0; 
+	margin-top: 46rpx;
+}
+.ic_add image{
+	width: 100%;
+	height: 100%;
+}
+.uc_det_rest text{
+	display: block;
+	color:#999;
+	font-size: 24rpx;
+	flex: 6;
+	line-height: 108rpx;
+	padding-top: 13rpx;
+}
+.call_phone{
+	flex-grow:0; 
+	width: 81rpx;
+	height: 81rpx;
+	border-radius: 50%;
+}
+.call_phone image{
+	width: 100%;
+	height: 100%;
+}

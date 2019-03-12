@@ -1,0 +1,25 @@
+<!--pages/used_car/used_car.wxml-->
+<view class="container">
+    <view class="uc_list">
+        <a href="">
+            <image src="{{usedCarImg}}"></image>
+        </a>
+    </view>
+    <view class="uc_det">
+        <view class="uc_det_tit">
+            <h1>{{usedCartTitle}}</h1>
+        </view>
+        <view class="uc_det_text">
+            <text>介绍：{{usedCarText}}</text>
+        </view>
+        <view class="uc_det_rest">
+            <i class="ic_add">
+                <image src="../images/carhome/ic_dizhi.png"></image>
+            </i>
+            <text>{{usedCarAddressText}}</text>
+            <view class="call_phone" bindtap='callphone'>
+                <image src="../images/carhome/ic_dianhua.png"></image>
+            </view>
+        </view>
+    </view>
+</view>

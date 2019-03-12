@@ -1,0 +1,104 @@
+<!--pages/myself_index/myself_index.wxml-->
+<view class="container" >
+    <view class="my_head">
+        <view class="my_head_pic">
+            <image src="{{myHeadPic}}"></image>
+        </view>
+        <view class="my_head_name">
+            {{myHeadName}}
+        </view>
+    </view>
+    <view class="my_con" >
+        <navigator class="my_con_item" url="../my_owner/my_owner">
+            <view class="my_ic">
+                <view class="ic_img">
+                    <image src="../images/myself/pic5.png"></image>
+                </view>
+            </view>
+            <view class="my_lable">
+                <lable>车主码</lable>
+            </view>
+            <view class="my_jt">
+                <view class="ic_jt">
+                    <image src="../images/myself/jiantou.png"></image>
+                </view>
+            </view>
+        </navigator>
+        <navigator class="my_con_item" url="../order/order">
+            <view class="my_ic">
+                <view class="ic_img">
+                    <image src="../images/myself/pic6.png"></image>
+                </view>
+            </view>
+            <view class="my_lable">
+                <lable>我的订单</lable>
+            </view>
+            <view class="my_jt">
+                <view class="ic_jt">
+                    <image src="../images/myself/jiantou.png"></image>
+                </view>
+            </view>
+        </navigator>
+        <navigator class="my_con_item" url="../friend-assist/friend-assist">
+            <view class="my_ic">
+                <view class="ic_img">
+                    <image src="../images/myself/pic7.png"></image>
+                </view>
+            </view>
+            <view class="my_lable">
+                <lable>助攻进度</lable>
+            </view>
+            <view class="my_jt">
+                <view class="ic_jt">
+                    <image src="../images/myself/jiantou.png"></image>
+                </view>
+            </view>
+        </navigator>
+        <navigator class="my_con_item" url="../faq/faq">
+            <view class="my_ic">
+                <view class="ic_img">
+                    <image src="../images/myself/pic8.png"></image>
+                </view>
+            </view>
+            <view class="my_lable">
+                <lable>常见问题</lable>
+            </view>
+            <view class="my_jt">
+                <view class="ic_jt">
+                    <image src="../images/myself/jiantou.png"></image>
+                </view>
+            </view>
+        </navigator>
+        <!-- 这里的联系客服指的是点击后拨打电话 -->
+        <view class="my_con_item" bindtap='callphone'>
+            <view class="my_ic">
+                <view class="ic_img">
+                    <image src="../images/myself/pic9.png"></image>
+                </view>
+            </view>
+            <view class="my_lable">
+                <lable>联系客服</lable>
+            </view>
+            <view class="my_jt">
+                <view class="ic_jt">
+                    <image src="../images/myself/jiantou.png"></image>
+                </view>
+            </view>
+        </view>
+        <navigator class="my_con_item last_item" url="../join_we/join_we">
+            <view class="my_ic">
+                <view class="ic_img">
+                    <image src="../images/myself/pic10.png"></image>
+                </view>
+            </view>
+            <view class="my_lable">
+                <lable>加入我们</lable>
+            </view>
+            <view class="my_jt">
+                <view class="ic_jt">
+                    <image src="../images/myself/jiantou.png"></image>
+                </view>
+            </view>
+        </navigator>
+    </view>
+</view>

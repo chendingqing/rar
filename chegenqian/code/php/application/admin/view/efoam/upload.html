@@ -1,0 +1,167 @@
+{extend name="public:base" /}
+{block name="js"}
+<!--上传图片时的灯箱效果插件   Jquery  也需要引入   必要-->
+<link rel="stylesheet" href="__STATIC__/lightbox/css/lightbox.css">
+<script src="__STATIC__/lightbox/js/lightbox.js"></script>
+<!--上传图片时的灯箱效果插件      必要-->
+
+<script type="text/javascript">
+    $(function () {
+        menu_selected('/admin/Admin/lists');
+    });
+</script>
+{/block}
+{block name="content"}
+<div class="x-body">
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+    <legend>上传多张图片</legend>
+</fieldset>
+<style>
+    .imgSize{
+        max-height:32px;
+        padding: 5px;
+    }
+    #picUpload tr td:first-child{
+         padding: 3px;
+        display: flex;
+    }
+    #picUpload tr td{
+        max-height: 50px;
+    }
+    .layui-table th {
+        text-align: center;
+    }
+    #picUpload tr  td a{
+        margin: 0 auto;
+    }
+</style>
+    <form action="/admin/Efoam/upload" id="form" enctype="multipart/form-data"  method="post">
+        <div class="layui-col-md9 layui-form-item">
+            <div class="layui-upload">
+                <div class="layui-upload">
+                    <div class="layui-upload-drag" id="testList">
+                        <i class="layui-icon"></i>
+                        <p>点击上传，或将文件拖拽到此处</p>
+                    </div>
+                    <div class="layui-upload-list">
+                        <table class="layui-table">
+                            <colgroup>
+                                <col width="4%">
+                                <col width="10%">
+                                <col width="10%">
+                                <col width="10%">
+                                <col>
+                            </colgroup>
+                            <thead>
+                            <tr><th>文件预览</th>
+                                <th>大小</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr></thead>
+                            <tbody id="picUpload"></tbody>
+                        </table>
+                    </div>
+                    <button type="button" class="layui-btn" id="testListAction">开始上传</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="layui-col-md9 layui-form-item">
+            <span class="layui-btn sub" >提交</span>
+        </div>
+        <div style="clear: both" id="hiddenInput"></div>
+        <!--存放隐藏图片地址-->
+    </form>
+</div>
+<script type="application/javascript">
+   $(function () {
+       //模拟表单提交
+        $(".sub").click(function () {
+            console.log($("#form").serialize());
+            $.post("/admin/Efoam/post",$("#form").serialize())
+        });
+
+       layui.use('upload', function(){
+           var $ = layui.jquery
+               ,upload = layui.upload;
+           //多文件列表示例
+           var demoListView = $('#picUpload')
+               ,uploadListIns = upload.render({
+               elem: '#testList'
+               ,url: '/admin/Efoam/picUpload'
+               ,accept: 'file'
+               ,multiple: true
+               ,auto: false
+               ,size: 2048 //最大允许上传的文件大小
+               ,drag:true //是否接受拖拽的文件上传
+//               ,data: { id: 1} 课携带额外参数上传
+               ,bindAction: '#testListAction'
+               ,choose: function(obj){
+                   var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+                   //读取本地文件
+                   obj.preview(function(index, file, result){
+                       var tr = $(['<tr id="upload-'+ index +'">'
+                           ,'<td>'+ '<a href="'+result+'"data-lightbox="image-1" data-title="上传图片" ><img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img imgSize" alt="image"></a>' +'</td>'
+                           ,'<td>'+ (file.size/1024).toFixed(1) +'kb</td>'
+                           ,'<td>等待上传</td>'
+                           ,'<td>'
+                           ,'<button class="layui-btn layui-btn-xs picReload layui-hide">重传</button>'
+                           ,'<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
+                           ,'</td>'
+                           ,'</tr>'].join(''));
+
+                       //单个重传
+                       tr.find('.picReload').on('click', function(){
+                           obj.upload(index, file);
+                       });
+
+                       //删除
+                       tr.find('.demo-delete').on('click', function(){
+                           delete files[index]; //删除对应的文件
+                           tr.remove();
+                           uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+                       });
+
+                       demoListView.append(tr);
+                   });
+               }
+               ,done: function(res, index, upload){
+                   if(res.code == 200){ //上传成功
+                       var tr = demoListView.find('tr#upload-'+ index)
+                           ,tds = tr.children();
+                       tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
+                       tds.eq(3).html('<span class="layui-border-box clearCol"><i class="layui-icon layui-icon-ok"></i></span>'); //清空操作
+                       layer.msg(res.msg,{time:800});
+                       $("#hiddenInput").after("<input type='hidden' value='"+res.data.path+"' name='picPath[]'>");
+                       var Hvalue = $(" .layui-tab-content .x-body").height();
+                       $(".page-content").css({"min-height":Number(Hvalue)+180+'px'});
+                       return delete this.files[index]; //删除文件队列已经上传成功的文件
+                   }else {
+                       layer.msg(res.msg,{time:800});
+                   }
+                   this.error(index, upload);
+               }
+               ,error: function(index, upload){
+                   var tr = demoListView.find('tr#upload-'+ index)
+                       ,tds = tr.children();
+                   tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+                   tds.eq(3).find('.picReload').removeClass('layui-hide'); //显示重传
+               }
+           });
+           //
+           //       upload.render({
+//               elem: '#test2'
+//               ,url: '/admin/Efoam/picUpload'
+//               ,multiple: true //是否允许多文件上传
+////               ,number:6 //可上传的文件数量，
+//               ,auto: false //是否选完文件后自动上传
+//               ,drag:true //是否接受拖拽的文件上传
+////               ,size: 2048 //最大允许上传的文件大小
+////               ,data: {
+////                   id: 1
+////               }
+       });
+
+   })
+</script>
+{/block}

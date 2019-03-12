@@ -1,0 +1,11 @@
+<!--pages/null_order/null_order.wxml-->
+<view class="container">
+    <view class="pmpty_page" >
+        <view class="null">
+            <image src="../images/404/{{show}}.png"></image>
+        </view>
+        <view class="null_text">
+            {{showText}}
+        </view>
+    </view>
+</view>
